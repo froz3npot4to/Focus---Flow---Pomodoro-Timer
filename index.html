@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus & Flow - Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="card">
+       <div class="mode-toggles">
+        <button id="focus-mode-btn" class="active">Focus (25m)</button>
+        <button id="break-mode-btn">Break (5m)</button>
+       </div>
+       <div class="timer-display" id="time-display">25:00</div>
+
+       <div class="controls">
+        <button id="start-btn">Start</button>
+        <button id="pause-btn" disabled>Pause</button>
+        <button id="reset-btn">Reset</button>
+       </div>
+
+       <hr />
+
+       <div class="ambient-section">
+        <h3>Ambient Sounds</h3>
+        <button id="ambient-btn">Play White Noise</button>
+       </div>
+    </div>
+
+    <script src="script.js"></script>   
+</body>
+</html>

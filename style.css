@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+    background-color: #faf7f2;
+    color: #2d312e;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 2.75rem 2.25rem;
+    border-radius: 28px;
+    width: 360px;
+    text-align: center;
+    box-shadow: 0 12px 32px -8px rgba(78, 64, 49, 0.08),
+                0 4px 12px -2px rgba(78, 64, 49, 0.04);
+    border: 1px solid #eee8df;
+}
+
+.mode-toggles {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 2rem;
+    background-color: #f3eee6;
+    padding: 0.35rem;
+    border-radius: 14px;
+}
+
+.mode-toggles button {
+    flex: 1;
+    background: transparent;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 6px;
+    color: #71695e;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.15s ease-out;
+}
+
+.mode-toggles button.active {
+    background-color: #ffffff;
+    color: #1e2420;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.timer-display {
+    font-size: 4.75rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 2rem;
+    color: #1e2420;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+}
+
+.controls {
+    display: flex;
+    gap: 0.65rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.controls button {
+    background-color: #f3eee6;
+    color: #433d35;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.15s ease;
+}
+
+.controls button:hover:not(:disabled) {
+    background-color: #e8e0d4;
+    transform: translateY(-1px);
+}
+
+.controls button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.controls button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+#start-btn {
+    background-color: #2b593f;
+    color: #ffffff;
+}
+
+#start-btn:hover:not(:disabled) {
+    background-color: #224732;
+}
+
+#reset-btn {
+    background-color: transparent;
+    border: 1px solid #e5ddd0;
+    color: #8c8273;
+}
+
+#reset-btn:hover:not(:disabled) {
+    background-color: #faf7f2;
+    color: #433d35;
+    border-color: #d8cebf;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #f0eae1;
+    margin: 1.75rem 0 1.25rem;
+}
+
+.ambient-section h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #a3998b;
+  margin-bottom: 0.75rem;
+}
+
+#ambient-btn {
+  background-color: #df744a;
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.15rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+#ambient-btn:hover {
+  background-color: #cb6239;
+  transform: translateY(-1px);
+}
+
+#ambient-btn:active {
+  transform: translateY(0);
+}
+
