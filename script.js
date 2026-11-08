@@ -146,3 +146,16 @@ function playNotificationBeep() {
 ambientBtn.addEventListener("click", toggleNoise);
 
 updateDisplay();
+
+document.addEventListener("keydown", (e) => {
+  if (e.code === "Space") {
+    e.preventDefault();
+    if (timerInterval !== null) {
+      pauseTimer();
+    } else {
+      startTimer();
+    }
+  } else if (e.key.toLowerCase() === "r") {
+    resetTimer();
+  }
+});
