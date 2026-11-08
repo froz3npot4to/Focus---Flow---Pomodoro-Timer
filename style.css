@@ -154,3 +154,18 @@ hr {
   transform: translateY(0);
 }
 
+.progress-container {
+  width: 100%;
+  height: 6px;
+  background-color: #eee8df;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 1.75rem;
+}
+#progress-bar {
+  height: 100%;
+  width: 100%;
+  background-color: #2b593f;
+  transition: width 1s linear;
+}
+

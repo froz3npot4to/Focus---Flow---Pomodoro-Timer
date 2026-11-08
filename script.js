@@ -9,6 +9,7 @@ const resetBtn = document.getElementById("reset-btn");
 const focusModeBtn = document.getElementById("focus-mode-btn");
 const breakModeBtn = document.getElementById("break-mode-btn");
 const ambientBtn = document.getElementById("ambient-btn");
+const progressBar = document.getElementById("progress-bar");
 
 function formatTime(seconds) {
     const mins = Math.floor(seconds / 60);
@@ -22,6 +23,12 @@ function updateDisplay() {
     const formatted = formatTime(timeLeft);
     timeDisplay.textContent = formatted;
     document.title = `${formatted} - ${currentMode === "focus" ? "Focus" : "Break"}`;
+
+    const totalDuration = currentMode === "focus" ? 25 * 60 : 5 * 60;
+    const percentage = (timeLeft / totalDuration) * 100;
+    if (progressBar) {
+        progressBar.style.width = `${percentage}%`;
+    }
 }
 
 function startTimer() {
@@ -37,7 +44,8 @@ function startTimer() {
         } else {
             clearInterval(timerInterval);
             timerInterval = null;
-            alert(currentMode === "focus" ? "Focus session complete! Take a Break." : "Break Over! Time to Focus.");
+            playNotificationBeep();
+            alert(currentMode === "focus" ? "Focus session complete! Take a break." : "Break over! Time to focus.");
             switchMode(currentMode === "focus" ? "break" : "focus");
         }
     }, 1000);
@@ -116,11 +124,25 @@ function toggleNoise() {
         }
         isPlayingNoise = false;
         ambientBtn.innerText = "Play White Noise";
-        ambientBtn.style.backgroundColor = "#6366f1";
+        ambientBtn.style.backgroundColor = "";
     }
+}
+
+function playNotificationBeep() {
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = "sine";
+  osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5 note
+  osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.3); // A5 note
+  gain.gain.setValueAtTime(0.1, ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start();
+  osc.stop(ctx.currentTime + 0.5);
 }
 
 ambientBtn.addEventListener("click", toggleNoise);
 
 updateDisplay();
-    
